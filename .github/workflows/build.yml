@@ -1,34 +1,20 @@
-name: Build Modded Fishing Auto-Clicker
+name: Build Modded Fishing
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-    
-    - name: Make gradlew executable
-      run: chmod +x gradlew
-    
-    - name: Build with Gradle
-      run: ./gradlew build
-    
-    - name: Upload JAR as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: moddedfishing-1.0.0
-        path: build/libs/moddedfishing-1.0.0.jar
-        retention-days: 30
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - run: chmod +x gradlew
+      - run: ./gradlew build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: moddedfishing-1.0.0
+          path: build/libs/moddedfishing-1.0.0.jar
+          retention-days: 30
