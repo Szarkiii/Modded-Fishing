@@ -14,27 +14,18 @@ java {
 
 minecraft {
     mappings channel: 'official', version: '1.20.1'
+    // ... rest of config
+}
 
-    runs {
-        client {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.level.net.minecraftforge', 'DEBUG'
-            args '--username', 'Developer'
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.minecraftforge.net/' }
+    maven { url = 'https://maven.parchmentmc.org' }
+}
 
-            mods {
-                moddedfishing {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.level.net.minecraftforge', 'DEBUG'
-
-            mods {
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+}            mods {
                 moddedfishing {
                     source sourceSets.main
                 }
