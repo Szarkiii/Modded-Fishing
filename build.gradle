@@ -14,7 +14,33 @@ java {
 
 minecraft {
     mappings channel: 'official', version: '1.20.1'
-    // ... rest of config
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.level.net.minecraftforge', 'DEBUG'
+            args '--username', 'Developer'
+
+            mods {
+                moddedfishing {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.level.net.minecraftforge', 'DEBUG'
+
+            mods {
+                moddedfishing {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
 }
 
 repositories {
@@ -25,16 +51,24 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
-}            mods {
-                moddedfishing {
-                    source sourceSets.main
-                }
-            }
-        }
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'     : 'moddedfishing',
+            'Specification-Vendor'    : 'AutoFishing Team',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.jar.archiveVersion,
+            'Implementation-Vendor'   : 'AutoFishing Team'
+        ])
     }
 }
 
-repositories {
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}repositories {
     mavenCentral()
     maven { url = 'https://maven.minecraftforge.net/' }
 }
