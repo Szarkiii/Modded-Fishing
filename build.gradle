@@ -1,3 +1,11 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://maven.parchmentmc.org' }
+    }
+}
+
 plugins {
     id 'eclipse'
     id 'maven-publish'
@@ -35,6 +43,40 @@ minecraft {
             property 'forge.logging.level.net.minecraftforge', 'DEBUG'
 
             mods {
+                moddedfishing {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.minecraftforge.net/' }
+    maven { url = 'https://maven.parchmentmc.org' }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.0'
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'     : 'moddedfishing',
+            'Specification-Vendor'    : 'AutoFishing Team',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.jar.archiveVersion,
+            'Implementation-Vendor'   : 'AutoFishing Team'
+        ])
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}            mods {
                 moddedfishing {
                     source sourceSets.main
                 }
