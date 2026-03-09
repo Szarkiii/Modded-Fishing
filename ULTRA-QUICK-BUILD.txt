@@ -1,0 +1,43 @@
+╔════════════════════════════════════════════════════════════════╗
+║     MODDED FISHING AUTO-CLICKER - ULTRA QUICK BUILD             ║
+║              (On ANY Computer - 3 Minutes)                      ║
+╚════════════════════════════════════════════════════════════════╝
+
+IF YOU HAVE INTERNET ACCESS ON ANY COMPUTER:
+
+WINDOWS:
+========
+1. Extract this folder
+2. Open Command Prompt (cmd) in this folder
+3. Paste and run:
+   gradlew.bat build --offline 2>nul || gradlew.bat build
+
+THAT'S IT! Your JAR will be in: build\libs\moddedfishing-1.0.0.jar
+
+
+MAC/LINUX:
+==========
+1. Extract this folder
+2. Open Terminal in this folder
+3. Paste and run:
+   chmod +x gradlew && ./gradlew build
+
+THAT'S IT! Your JAR will be in: build/libs/moddedfishing-1.0.0.jar
+
+
+STILL DOESN'T WORK?
+===================
+If you get gradle errors:
+- Make sure you have Java installed (java -version)
+- Make sure you have internet
+- Just try running the command again
+
+The first run downloads ~500MB (takes 5-10 min with good internet)
+Later builds are instant.
+
+
+ONCE YOU HAVE THE JAR:
+======================
+Copy to: .minecraft/mods/
+Then launch Minecraft with Forge
+Press F while fishing - that's it!
